@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  medvault-ai:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: medvault_ai_app
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      - FLASK_ENV=production
+      - SECRET_KEY=medvault-ai-super-secret-security-key-2026
+      # Set your live keys here or in .env file
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-}
+      - SUPABASE_URL=${SUPABASE_URL:-}
+      - SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY:-}
+    restart: unless-stopped
