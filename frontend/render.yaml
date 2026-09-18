@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: medvault
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: REACT_APP_API_URL
+        value: https://medvault-xxxxx.onrender.com
